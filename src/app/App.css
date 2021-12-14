@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+}
+
+.content {
+  width: 580px;
+  height: 370px;
+
+  padding: 20px 30px;
+}
+
+.count_players {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper_select {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.wrapper_info {
+  display: flex;
+}
+
+.wrapper_result {
+  display: flex;
+  align-items: center;
+}
+
+.calculate {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 20px 0;
+}
+
+.display_wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 580px;
+}
+
+
