@@ -1,31 +1,35 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Text from "../components/Text";
 import LayoutSelect from "../components/Layouts/LayoutSelect";
 import LayoutCheckbox from "../components/Layouts/LayoutCheckbox";
+import DisplayResult from "../components/DisplayResult";
 import { addition } from "../constants/constants";
 import { getPricePlayer } from "../functions/getPricePlayer";
 
 import './App.css';
-import DisplayResult from "../components/DisplayResult";
 
 function App() {
   const [countPlayer, setCountPlayer] = useState<number>(0);
-  const [isThey, setIsThey] = useState<boolean>(false)
+  const [isTheyCreate, setIsTheyCreate] = useState<boolean>(false)
   const [isStartGear, setIsStartGear] = useState<boolean>(false);
   const [isScript, setIsScript] = useState<boolean>(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalAmountOne, setTotalAmountOne] = useState(0);
-  const pricePlayer = getPricePlayer(countPlayer);
+  const pricePlayer = getPricePlayer(countPlayer, isTheyCreate);
 
-  const calculate = () => {
+  // const calculate = () => {
+  //
+  // }
+
+  useEffect(() => {
     const resultGear = isStartGear ? countPlayer * addition : 0
     const resultScript = isScript ? countPlayer * addition : 0
     const sum = resultGear + resultScript
     setTotalAmount( countPlayer * pricePlayer + resultGear + resultScript)
     setTotalAmountOne(sum / countPlayer + pricePlayer)
-  }
+  })
 
   return (
       <div className="wrapper">
@@ -40,8 +44,8 @@ function App() {
             />
             <LayoutCheckbox
                 header={"Сделаете текстуру повязки сами"}
-                checked={isThey}
-                setChecked={setIsThey}
+                checked={isTheyCreate}
+                setChecked={setIsTheyCreate}
             />
             <Text text={"дополнения:"} />
             <LayoutCheckbox
@@ -65,13 +69,6 @@ function App() {
             />
             <div className="calculate">
               <Text text={"*цены указаны за одного человека"} uppercase={false} />
-              <Button
-                  disabled={!countPlayer}
-                  onClick={() => calculate()}
-                  variant="contained"
-              >
-                рассчитать
-              </Button>
             </div>
           </div>
         </Paper>
