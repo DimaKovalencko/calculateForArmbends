@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Paper from '@mui/material/Paper';
+import { Paper } from '@mui/material';
 import Button from '@mui/material/Button';
 import Text from "../components/Text";
 import LayoutSelect from "../components/Layouts/LayoutSelect";
