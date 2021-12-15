@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { Paper } from '@mui/material';
-import Button from '@mui/material/Button';
 import Text from "../components/Text";
 import LayoutSelect from "../components/Layouts/LayoutSelect";
 import LayoutCheckbox from "../components/Layouts/LayoutCheckbox";
@@ -19,17 +18,13 @@ function App() {
   const [totalAmountOne, setTotalAmountOne] = useState(0);
   const pricePlayer = getPricePlayer(countPlayer, isTheyCreate);
 
-  // const calculate = () => {
-  //
-  // }
-
   useEffect(() => {
     const resultGear = isStartGear ? countPlayer * addition : 0
     const resultScript = isScript ? countPlayer * addition : 0
     const sum = resultGear + resultScript
     setTotalAmount( countPlayer * pricePlayer + resultGear + resultScript)
     setTotalAmountOne(sum / countPlayer + pricePlayer)
-  })
+  }, [setTotalAmount, setTotalAmountOne, isStartGear, countPlayer, pricePlayer, isScript])
 
   return (
       <div className="wrapper">
